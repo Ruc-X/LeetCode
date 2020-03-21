@@ -21,7 +21,7 @@ namespace LeetCode
             l = BoundaryBinartSearch(nums, target, l_left, l_right, false);
             Console.WriteLine("{0} {1}",f,l);
         }
-        static int BoundaryBinartSearch(int[] nums, int target, int left, int right, bool IsLeft)
+        static int BoundaryBinartSearch(int[] nums, int target, int left, int right, Boolean IsLeft)
         {
             int mid = left + (right - left) / 2;
             while(left<=right)
