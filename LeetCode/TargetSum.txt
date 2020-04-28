@@ -1,0 +1,35 @@
+package com.company;
+
+import java.awt.*;
+import java.lang.annotation.Target;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        int []nums=new int[]{1};
+        int sum=nums[0];
+        int length=nums.length;
+        int s=2;
+        for(int i=1;i<length;i++)
+        {
+           sum+=nums[i];
+        }
+        if(sum<s)
+            return ;
+        int [][]dp=new int[length][2*sum+1];
+        dp[0][nums[0]+sum]++;
+        dp[0][-nums[0]+sum]++;
+        for(int i=1;i<length;i++){
+           for(int j=0;j<2*sum+1;j++) {
+                if(dp[i-1][j]!=0)
+                {
+                    dp[i][j+nums[i]]+=dp[i-1][j];
+                    dp[i][j-nums[i]]+=dp[i-1][j];
+                }
+           }
+        }
+        System.out.print(dp[length-1][s+sum]);
+    }
+}
